@@ -132,7 +132,8 @@ const angleUnits: Map<Unit<Angle>, AngleUnit> = new Map([
   [Angle.gradians, 'grad'],
   [Angle.milsNATO, 'mil'],
 ])
-type CaveInput = {
+
+export type CaveInput = {
   survey: FrcsSurveyFile
   plot?: FrcsPlotFile
   summaries?: FrcsTripSummaryFile

@@ -9,6 +9,7 @@ import {
 } from '@speleotica/frcsdata/node'
 import { convertToBreakout } from '.'
 import { Unitize } from '@speleotica/unitized'
+import util from 'util'
 
 describe('convertToBreakout', function () {
   it('basic test', async function () {
@@ -69,8 +70,6 @@ describe('convertToBreakout', function () {
                   station: 'AE19',
                   lrud: ['2.00', '12.00', '0.00', '20.00'],
                 },
-                {},
-                { station: 'AE19' },
                 {
                   measurements: [
                     {
@@ -86,8 +85,6 @@ describe('convertToBreakout', function () {
                   station: 'AE18',
                   lrud: ['6.00', '10.00', '25.00', '0.00'],
                 },
-                {},
-                { station: 'AE18' },
                 {
                   measurements: [
                     {
@@ -103,8 +100,6 @@ describe('convertToBreakout', function () {
                   station: 'AE17',
                   lrud: ['3.00', '5.00', '0.00', '0.00'],
                 },
-                {},
-                { station: 'AE17' },
                 {
                   measurements: [
                     { dir: 'fs', dist: '6.70', azm: '0.00', inc: '-90.00' },
@@ -115,8 +110,6 @@ describe('convertToBreakout', function () {
                   station: 'AE16',
                   lrud: ['3.00', '5.00', '6.00', '1.00'],
                 },
-                {},
-                { station: 'AE16' },
                 {
                   measurements: [
                     {
@@ -132,8 +125,6 @@ describe('convertToBreakout', function () {
                   station: 'AE15',
                   lrud: ['4.00', '0.00', '2.00', '1.00'],
                 },
-                {},
-                { station: 'AE15' },
                 {
                   measurements: [
                     { dir: 'fs', dist: '10.00', azm: '21.50', inc: '6.00' },
@@ -144,8 +135,6 @@ describe('convertToBreakout', function () {
                   station: 'AE14',
                   lrud: ['5.00', '5.00', '0.00', '3.00'],
                 },
-                {},
-                { station: 'AE14' },
                 {
                   measurements: [
                     {
@@ -161,8 +150,6 @@ describe('convertToBreakout', function () {
                   station: 'AE13',
                   lrud: ['0.00', '7.00', '20.00', '5.00'],
                 },
-                {},
-                { station: 'AE13' },
                 {
                   measurements: [
                     {
@@ -178,8 +165,6 @@ describe('convertToBreakout', function () {
                   station: 'AE12',
                   lrud: ['3.00', '5.00', '4.00', '4.00'],
                 },
-                {},
-                { station: 'AE12' },
                 {
                   measurements: [{ dir: 'fs', dist: '26.80', inc: '-90.00' }],
                 },
@@ -222,8 +207,6 @@ describe('convertToBreakout', function () {
                   station: 'A2',
                   lrud: ['5.00', '10.00', '35.00', '5.00'],
                 },
-                {},
-                { station: 'A2' },
                 {
                   measurements: [
                     {
@@ -239,8 +222,6 @@ describe('convertToBreakout', function () {
                   station: 'A3',
                   lrud: ['3.00', '1.00', '15.00', '5.00'],
                 },
-                {},
-                { station: 'A3' },
                 {
                   measurements: [
                     { dir: 'fs', dist: '4.17', azm: '0.00', inc: '90.00' },
@@ -289,8 +270,6 @@ describe('convertToBreakout', function () {
                   station: 'ML$1',
                   lrud: ['12.00', '12.00', '35.00', '15.00'],
                 },
-                {},
-                { station: 'ML$1' },
                 {
                   measurements: [
                     {
@@ -306,8 +285,6 @@ describe('convertToBreakout', function () {
                   station: 'ML$2',
                   lrud: ['30.00', '2.00', '16.00', '5.00'],
                 },
-                {},
-                { station: 'ML$2' },
                 {
                   measurements: [
                     {
@@ -323,8 +300,6 @@ describe('convertToBreakout', function () {
                   station: 'ML$3',
                   lrud: ['0.00', '4.00', '5.00', '7.00'],
                 },
-                {},
-                { station: 'ML$3' },
                 {
                   measurements: [
                     { dir: 'fs', dist: '6.00', inc: '-90.00' },
@@ -367,8 +342,6 @@ describe('convertToBreakout', function () {
                   station: 'QAP1',
                   lrud: ['3.00', '3.00', '1.00', '7.00'],
                 },
-                {},
-                { station: 'QAP1' },
                 {
                   measurements: [
                     {
@@ -384,8 +357,6 @@ describe('convertToBreakout', function () {
                   station: 'QAP2',
                   lrud: ['2.00', '3.00', '0.00', '10.00'],
                 },
-                {},
-                { station: 'QAP2' },
                 {
                   measurements: [
                     {
@@ -401,8 +372,6 @@ describe('convertToBreakout', function () {
                   station: 'QAP3',
                   lrud: ['1.00', '4.00', '1.00', '12.00'],
                 },
-                {},
-                { station: 'QAP3' },
                 {
                   measurements: [
                     {
@@ -418,8 +387,6 @@ describe('convertToBreakout', function () {
                   station: 'QAP4',
                   lrud: ['4.00', '4.00', '2.00', '12.00'],
                 },
-                {},
-                { station: 'QAP4' },
                 {
                   measurements: [
                     {
@@ -435,8 +402,6 @@ describe('convertToBreakout', function () {
                   station: 'QAP5',
                   lrud: ['2.00', '7.00', '5.00', '12.00'],
                 },
-                {},
-                { station: 'QAP5' },
                 {
                   measurements: [
                     { dir: 'fs', dist: '23.00', azm: '39.50', inc: '9.00' },
@@ -447,8 +412,6 @@ describe('convertToBreakout', function () {
                   station: 'QAP6',
                   lrud: ['3.00', '4.00', '0.00', '15.00'],
                 },
-                {},
-                { station: 'QAP6' },
                 {
                   measurements: [
                     { dir: 'fs', dist: '35.10', azm: '11.50', inc: '0.50' },
@@ -459,8 +422,6 @@ describe('convertToBreakout', function () {
                   station: 'QAP7',
                   lrud: ['3.00', '6.00', '1.00', '25.00'],
                 },
-                {},
-                { station: 'QAP7' },
                 {
                   measurements: [
                     { dir: 'fs', dist: '5.80', inc: '-90.00' },
@@ -508,8 +469,6 @@ describe('convertToBreakout', function () {
                   station: 'B30',
                   lrud: ['2.00', '3.00', '4.00', '2.00'],
                 },
-                {},
-                { station: 'B30' },
                 {
                   measurements: [
                     { dir: 'fs', dist: '13.70', azm: '0.00', inc: '40.00' },

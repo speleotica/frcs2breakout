@@ -285,6 +285,8 @@ function convertSurvey(trip: FrcsTrip): Survey {
       // if the last station doesn't match the from station of this shot,
       // insert an empty (non) shot and a new from station
       let fromStation: Station | undefined
+      let toStation: Station | undefined
+      let metashot: Shot | undefined
       if (lastToStation && lastToStation.station === shot.from) {
         fromStation = lastToStation
       } else if (survey.length) {
@@ -309,11 +311,11 @@ function convertSurvey(trip: FrcsTrip): Survey {
       if (shot.to) {
         // insert shot
         measurements = []
-        const metashot: Shot = { measurements }
+        metashot = { measurements }
         if (shot.excludeDistance) metashot.excludeDist = true
         survey.push(metashot)
         // insert to station
-        const toStation: Station = { station: shot.to }
+        toStation = { station: shot.to }
         survey.push(toStation)
 
         // add lruds to to station
@@ -329,6 +331,9 @@ function convertSurvey(trip: FrcsTrip): Survey {
       } else {
         measurements = fromStation.splays || (fromStation.splays = [])
       }
+      lastFromStation = fromStation
+      lastShot = metashot
+      lastToStation = toStation
     }
 
     const dist = shot?.distance?.get(distanceUnit)

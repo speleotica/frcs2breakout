@@ -210,7 +210,7 @@ describe('convertToBreakout', function () {
                 },
                 { station: 'AE11', lrud: ['0', '7.00', '20.00', '5.00'] },
               ],
-              date: '1981-02-15T06:00:00.000Z',
+              date: '1981-02-15',
               surveyNotesFile: 'FRCS_1_2-15-1981.pdf',
             },
             {
@@ -280,7 +280,7 @@ describe('convertToBreakout', function () {
                   lrud: ['36.00', '12.00', '120.00', '120.00'],
                 },
               ],
-              date: '1981-02-14T06:00:00.000Z',
+              date: '1981-02-14',
               surveyNotesFile: 'FRCS_2_2-14-1981.pdf',
             },
             {
@@ -364,7 +364,7 @@ describe('convertToBreakout', function () {
                   lrud: ['0.00', '4.00', '11.00', '1.00'],
                 },
               ],
-              date: '1982-05-16T05:00:00.000Z',
+              date: '1982-05-16',
               surveyNotesFile: 'FRCS_3_5-16-1982.pdf',
             },
             {
@@ -500,7 +500,7 @@ describe('convertToBreakout', function () {
                   lrud: ['2.00', '4.00', '6.00', '20.00'],
                 },
               ],
-              date: '1983-03-05T06:00:00.000Z',
+              date: '1983-03-05',
               surveyNotesFile: 'FRCS_4_3-5-1983.pdf',
             },
             {
@@ -559,7 +559,7 @@ describe('convertToBreakout', function () {
                 },
                 { station: 'B30sp', lrud: ['2.00', '4.00', '6.00', '0'] },
               ],
-              date: '1981-03-06T06:00:00.000Z',
+              date: '1981-03-06',
               surveyNotesFile: 'FRCS_5_3-6-1981.pdf',
             },
           ],

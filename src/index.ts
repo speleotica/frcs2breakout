@@ -246,7 +246,7 @@ function convertTripHeader({
     survey: [],
   }
   const date = summary?.date || header.date
-  if (date) result.date = date.toISOString()
+  if (date) result.date = date.toISOString().substring(0, 10)
 
   return result
 }

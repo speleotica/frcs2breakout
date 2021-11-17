@@ -34,31 +34,6 @@ describe('convertToBreakout', function () {
     expect(breakout).to.deep.equal({
       caves: {
         'Fisher Ridge Cave System': {
-          fixedStations: [
-            {
-              datum: 'WGS84',
-              distUnit: 'm',
-              ellipsoid: 'WGS84',
-              stations: {
-                AE18: {
-                  east: '21.993',
-                  elev: '20.819',
-                  north: '11.222',
-                },
-                AE19: {
-                  east: '21.981',
-                  elev: '28.324',
-                  north: '11.177',
-                },
-                AE20: {
-                  east: '20.000',
-                  elev: '30.000',
-                  north: '10.000',
-                },
-              },
-              utmZone: 14,
-            },
-          ],
           trips: [
             {
               name: `1 ENTRANCE DROPS, JOE'S "I LOVE MY WIFE TRAVERSE", TRICKY TRAVERSE`,
@@ -231,15 +206,12 @@ describe('convertToBreakout', function () {
               azmBacksightsCorrected: false,
               incBacksightsCorrected: false,
               survey: [
-                {
-                  station: 'A1',
-                  lrud: ['24.00', '84.00', '36.00', '54.00'],
-                },
+                { station: 'A1', lrud: ['2.00', '7.00', '3.00', '4.50'] },
                 {
                   measurements: [
                     {
                       dir: 'fs',
-                      dist: '586.00',
+                      dist: '48.83',
                       azm: '292.00',
                       inc: '-42.00',
                     },
@@ -248,7 +220,7 @@ describe('convertToBreakout', function () {
                 },
                 {
                   station: 'A2',
-                  lrud: ['60.00', '120.00', '420.00', '60.00'],
+                  lrud: ['5.00', '10.00', '35.00', '5.00'],
                 },
                 {},
                 { station: 'A2' },
@@ -256,7 +228,7 @@ describe('convertToBreakout', function () {
                   measurements: [
                     {
                       dir: 'fs',
-                      dist: '149.00',
+                      dist: '12.42',
                       azm: '333.50',
                       inc: '35.00',
                     },
@@ -265,19 +237,19 @@ describe('convertToBreakout', function () {
                 },
                 {
                   station: 'A3',
-                  lrud: ['36.00', '12.00', '180.00', '60.00'],
+                  lrud: ['3.00', '1.00', '15.00', '5.00'],
                 },
                 {},
                 { station: 'A3' },
                 {
                   measurements: [
-                    { dir: 'fs', dist: '50.00', azm: '0.00', inc: '90.00' },
+                    { dir: 'fs', dist: '4.17', azm: '0.00', inc: '90.00' },
                     { dir: 'bs', azm: '0.00' },
                   ],
                 },
                 {
                   station: 'A4',
-                  lrud: ['36.00', '12.00', '120.00', '120.00'],
+                  lrud: ['3.00', '1.00', '10.00', '10.00'],
                 },
               ],
               date: '1981-02-14',
@@ -561,6 +533,19 @@ describe('convertToBreakout', function () {
               ],
               date: '1981-03-06',
               surveyNotesFile: 'FRCS_5_3-6-1981.pdf',
+            },
+          ],
+          fixedStations: [
+            {
+              distUnit: 'm',
+              ellipsoid: 'WGS84',
+              datum: 'WGS84',
+              utmZone: 14,
+              stations: {
+                AE20: { north: '10.000', east: '20.000', elev: '30.000' },
+                AE19: { north: '11.177', east: '21.981', elev: '28.324' },
+                AE18: { north: '11.222', east: '21.993', elev: '20.819' },
+              },
             },
           ],
         },

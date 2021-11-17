@@ -124,6 +124,7 @@ export type MetacaveData = {
 
 const distUnits: Map<Unit<Length>, DistanceUnit> = new Map([
   [Length.feet, 'ft'],
+  [Length.inches, 'ft'],
   [Length.meters, 'm'],
 ])
 
@@ -260,7 +261,9 @@ function formatLrud(number: number | undefined): string {
 function convertSurvey(trip: FrcsTrip): Survey {
   const survey: Survey = []
 
-  const { distanceUnit, azimuthUnit, inclinationUnit } = trip.header
+  let { distanceUnit } = trip.header
+  if (distanceUnit === Length.inches) distanceUnit = Length.feet
+  const { azimuthUnit, inclinationUnit } = trip.header
 
   let lastFromStation: Station | undefined
   let lastShot: Shot | undefined

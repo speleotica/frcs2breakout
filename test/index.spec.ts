@@ -13,6 +13,9 @@ import path from 'path'
 describe('convertToBreakout', function () {
   it('basic test', async function () {
     const survey = await parseFrcsSurveyFile(path.join(dirname, './cdata.fr'))
+    if ('INVALID' in survey) {
+      throw new Error('survey is invalid')
+    }
     const plot = await parseFrcsPlotFile(path.join(dirname, './FOR008.fr'))
     const summaries = await parseFrcsTripSummaryFile(
       path.join(dirname, './STAT_sum.txt')

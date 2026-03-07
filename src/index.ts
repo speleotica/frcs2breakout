@@ -206,6 +206,7 @@ function convertTrip({
   const result = convertTripHeader({
     tripNumber,
     header: trip.header,
+    units: trip.units,
     summary,
   })
 
@@ -224,10 +225,12 @@ function convertTrip({
 function convertTripHeader({
   tripNumber,
   header,
+  units,
   summary,
 }: {
   tripNumber?: number
   header: FrcsTripHeader
+  units: FrcsTrip['units']
   summary?: FrcsTripSummary
 }): Trip {
   const surveyors: Surveyors = {}
@@ -237,14 +240,14 @@ function convertTripHeader({
   const result: Trip = {
     name: `${tripNum} ${header.name}`,
     surveyors,
-    distUnit: distUnits.get(header.distanceUnit) || 'ft',
+    distUnit: distUnits.get(units.distanceUnit) || 'ft',
     angleUnit: 'deg',
-    azmFsUnit: angleUnits.get(header.azimuthUnit),
-    azmBsUnit: angleUnits.get(header.azimuthUnit),
-    incFsUnit: angleUnits.get(header.inclinationUnit),
-    incBsUnit: angleUnits.get(header.inclinationUnit),
-    azmBacksightsCorrected: Boolean(header.backsightAzimuthCorrected),
-    incBacksightsCorrected: Boolean(header.backsightInclinationCorrected),
+    azmFsUnit: angleUnits.get(units.azimuthUnit),
+    azmBsUnit: angleUnits.get(units.azimuthUnit),
+    incFsUnit: angleUnits.get(units.inclinationUnit),
+    incBsUnit: angleUnits.get(units.inclinationUnit),
+    azmBacksightsCorrected: Boolean(units.backsightAzimuthCorrected),
+    incBacksightsCorrected: Boolean(units.backsightInclinationCorrected),
     survey: [],
   }
   const date = summary?.date || header.date
@@ -261,9 +264,9 @@ function formatLrud(number: number | undefined): string {
 function convertSurvey(trip: FrcsTrip): Survey {
   const survey: Survey = []
 
-  let { distanceUnit } = trip.header
+  let { distanceUnit } = trip.units
   if (distanceUnit === Length.inches) distanceUnit = Length.feet
-  const { azimuthUnit, inclinationUnit } = trip.header
+  const { azimuthUnit, inclinationUnit } = trip.units
 
   let lastFromStation: Station | undefined
   let lastShot: Shot | undefined

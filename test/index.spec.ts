@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 import {
@@ -7,16 +5,17 @@ import {
   parseFrcsSurveyFile,
   parseFrcsTripSummaryFile,
 } from '@speleotica/frcsdata/node'
-import { convertToBreakout } from '.'
+import { convertToBreakout } from '../src'
 import { Unitize } from '@speleotica/unitized'
-import util from 'util'
+import { dirname } from './dirname'
+import path from 'path'
 
 describe('convertToBreakout', function () {
   it('basic test', async function () {
-    const survey = await parseFrcsSurveyFile(require.resolve('./cdata.fr'))
-    const plot = await parseFrcsPlotFile(require.resolve('./FOR008.fr'))
+    const survey = await parseFrcsSurveyFile(path.join(dirname, './cdata.fr'))
+    const plot = await parseFrcsPlotFile(path.join(dirname, './FOR008.fr'))
     const summaries = await parseFrcsTripSummaryFile(
-      require.resolve('./STAT_sum.txt')
+      path.join(dirname, './STAT_sum.txt')
     )
     const breakout = convertToBreakout({
       'Fisher Ridge Cave System': {

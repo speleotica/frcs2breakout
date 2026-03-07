@@ -178,7 +178,7 @@ function convertCave({
     trips[tripIndex] = convertTrip({
       tripNumber: tripIndex + 1,
       trip: survey.trips[tripIndex],
-      summary: summaries?.tripSummaries?.[tripIndex],
+      summary: summaries?.tripSummaries[tripIndex],
       surveyNotesFilePrefix,
     })
   }
@@ -198,7 +198,7 @@ function convertTrip({
   summary,
   surveyNotesFilePrefix,
 }: {
-  tripNumber: number
+  tripNumber?: number
   trip: FrcsTrip
   summary?: FrcsTripSummary
   surveyNotesFilePrefix?: string
@@ -226,7 +226,7 @@ function convertTripHeader({
   header,
   summary,
 }: {
-  tripNumber: number
+  tripNumber?: number
   header: FrcsTripHeader
   summary?: FrcsTripSummary
 }): Trip {
@@ -272,6 +272,8 @@ function convertSurvey(trip: FrcsTrip): Survey {
   let measurements: ShotMeasurement[] | undefined
 
   for (const shot of trip.shots) {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    if (!shot) continue
     if (
       lastFromStation &&
       lastShot &&
@@ -336,17 +338,18 @@ function convertSurvey(trip: FrcsTrip): Survey {
       lastToStation = toStation
     }
 
-    const dist = shot?.distance?.get(distanceUnit)
-    const azmFs = shot?.frontsightAzimuth?.get(azimuthUnit)
-    const azmBs = shot?.backsightAzimuth?.get(azimuthUnit)
-    let incFs = shot?.frontsightInclination?.get(inclinationUnit)
-    let incBs = shot?.backsightInclination?.get(inclinationUnit)
+    const dist = shot.distance.get(distanceUnit)
+    const azmFs = shot.frontsightAzimuth?.get(azimuthUnit)
+    const azmBs = shot.backsightAzimuth?.get(azimuthUnit)
+    let incFs = shot.frontsightInclination?.get(inclinationUnit)
+    let incBs = shot.backsightInclination?.get(inclinationUnit)
 
     if (!Number.isFinite(incFs) && !Number.isFinite(incBs)) {
       if (Number.isFinite(azmFs)) incFs = 0
       else if (Number.isFinite(azmBs)) incBs = 0
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (measurements) {
       // add frontsights
       const frontsight: ShotMeasurement = { dir: 'fs' }

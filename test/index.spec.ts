@@ -58,6 +58,8 @@ describe('convertToBreakout', function () {
                 {},
                 { station: 'AE20' },
                 {
+                  comment:
+                    "AE20     0        0        0        Bug-can't put before so put after-so can't make 2 fixed 10/28/12",
                   measurements: [
                     {
                       dir: 'fs',
@@ -162,6 +164,7 @@ describe('convertToBreakout', function () {
                     },
                     { dir: 'bs', azm: '236.00' },
                   ],
+                  comment: 'SHORT CANYON AT THE BASE OF THE SECOND DROP',
                 },
                 {
                   station: 'AE12',
@@ -339,6 +342,8 @@ describe('convertToBreakout', function () {
                     },
                     { dir: 'bs', azm: '49.50', inc: '-11.00' },
                   ],
+                  comment:
+                    'Quap Passage short cut from the Hunky-Dory access crawl.',
                 },
                 {
                   station: 'QAP1',

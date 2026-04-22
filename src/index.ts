@@ -69,6 +69,7 @@ export type Shot = {
   excludeDist?: boolean
   dist?: 'auto'
   measurements?: ShotMeasurement[]
+  comment?: string
 }
 
 export type Survey = Array<Station | Shot>
@@ -318,6 +319,7 @@ function convertSurvey(trip: FrcsTrip): Survey {
         measurements = []
         metashot = { measurements }
         if (shot.excludeDistance) metashot.excludeDist = true
+        if (shot.comment) metashot.comment = shot.comment
         survey.push(metashot)
         // insert to station
         toStation = { station: shot.to }
